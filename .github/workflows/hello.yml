@@ -13,7 +13,6 @@ jobs:
         run: |
           echo "Hello World!"
 
-jobs:
   date_job:
     runs-on: ubuntu-18.04
     steps:
@@ -21,7 +20,6 @@ jobs:
         run: |
           date
 
-jobs:
   Directory_job:
     runs-on: ubuntu-18.04
     steps:
