@@ -22,9 +22,9 @@ jobs:
           date
 
 jobs:
-  date_job:
+  Directory_job:
     runs-on: ubuntu-18.04
     steps:
-      - name: Now it is
+      - name: Directory content
         run: |
           ls -l
