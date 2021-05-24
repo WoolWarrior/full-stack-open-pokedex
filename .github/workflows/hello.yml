@@ -1,4 +1,4 @@
-name: Deployment pipeline
+name: Deploy
 
 on:
   push:
@@ -6,25 +6,12 @@ on:
       - master
 
 jobs:
-  simple_deployment_pipeline:
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with: 
-          node-version: '12.x'
-      - name: npm install
-        run : npm install
-      - name: lint
-        run : npm run eslint
-      - name: build
-        run : npm run build
-      - name: test
-        run : npm run test
-      - name: e2e test
-        uses: cypress-io/github-action@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          browser: chrome
-          command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: wool-ci-cd
+          heroku_email: awoolwarrior@gmail.com
