@@ -36,4 +36,6 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: wool-ci-cd
           heroku_email: awoolwarrior@gmail.com
-          
+          healthcheck: "https://wool-ci-cd.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
