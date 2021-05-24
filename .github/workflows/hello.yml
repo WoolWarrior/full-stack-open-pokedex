@@ -1,4 +1,4 @@
-name: Hello World!
+name: Deployment pipeline
 
 on:
   push:
@@ -6,15 +6,16 @@ on:
       - master
 
 jobs:
-  hello_world_job:
+  simple_deployment_pipeline:
     runs-on: ubuntu-18.04
     steps:
-      - name: Say hello
-        run: |
-          echo "Hello World!"
-      - name: Now Date
-        run: |
-          ls -l
-      - name: Directory
-        run: |
-          ls -l
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with: 
+          node-version: '12.x'
+      - name: npm install
+        run: 
+          npm install
+      - name: lint
+        run:
+          npm run eslint
